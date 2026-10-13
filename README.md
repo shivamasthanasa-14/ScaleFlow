@@ -45,3 +45,9 @@ Operational process analysis only: no clinical interpretation or medical priorit
 Local databases, custom uploads, reviewer workspaces, secrets, caches, logs, review archives, and development outputs are excluded from Git. A fresh checkout starts from synthetic demonstration records and recreates its own SQLite state. Existing local state is retained on disk.
 
 The Streamlit application needs a Python server and writable local storage; GitHub Pages cannot run it. Hosted SQLite files may be ephemeral, and this prototype has no production authentication or durable hosted storage configuration. Local Ollama requires a separately configured service and installed model; no model is bundled. Example environment variables are documentation only and are not automatically loaded from `.env.example`.
+
+## Streamlit Community Cloud readiness
+
+Deploy repository `shivamasthanasa-14/ScaleFlow`, branch `main`, entry point `app.py`, with Python 3.12. No secrets or system packages are required. Leave Use local Ollama for investigations unchecked and use the labelled deterministic prepared investigations.
+
+Follow-ups now use temporary SQLite storage unique to each Streamlit browser session. Reruns and navigation retain that visitor's changes without exposing them to another session. Storage is temporary, not a durable record system. Existing local follow-ups are preserved; set `SCALEFLOW_WORKSPACE_MODE=local` before desktop launch to use the old local database. Do not use local mode publicly. The server bind is left to the deployment environment; locally add `--server.address 127.0.0.1` if loopback-only access is required. Live local AI remains optional and its successful execution is not claimed verified.

@@ -11,7 +11,8 @@ from scaleflow.datasets import ROOT, LABELS, load_dataset, fingerprint
 from scaleflow.engine import STAGES, PERIODS, dt, snapshot, metrics, attention, trend
 from scaleflow.investigation import EvidenceTools, example_report, baseline_stage, report_markdown
 from scaleflow.importer import import_workbook
-from scaleflow.store import load_followup, save_followup
+from scaleflow.store import DEFAULT_DB, load_followup, save_followup
+from scaleflow.workspace import workspace_db
 from scaleflow.agent import local_models, investigate
 from scaleflow.presentation import STEP_NAMES, CATEGORY_NAMES, journey_counts, date_text, status_text, filter_attention, selected_case, history_rows
 
@@ -80,6 +81,7 @@ with st.sidebar:
     page = st.radio('Workspace', ['Process Overview', 'Investigate Delays'], label_visibility='collapsed', key='page')
     st.divider()
     st.caption('Fictional diagnostic operations. No patient data or clinical results.')
+    st.caption('Saved follow-ups belong to this session and are not retained after it ends.' if workspace_db() != DEFAULT_DB else 'Local workstation follow-ups persist.')
     with st.expander('Advanced Settings'):
         live = st.checkbox('Use local Ollama for investigations', key='live_mode')
         if st.button('Check installed models'):
@@ -231,7 +233,7 @@ else:
             else:
                 prepared_path = ROOT/'prepared'/f'{key}.json'
                 st.session_state['report_'+key] = json.loads(prepared_path.read_text()) if prepared_path.exists() else example_report(tools, stage)
-        saved = load_followup(key)
+        saved = load_followup(key, path=workspace_db())
         report = st.session_state.get('report_'+key) or (saved.get('report') if saved else None)
         if report:
             st.caption(report['mode'])
@@ -279,7 +281,7 @@ else:
                 deadline = b.date_input('Follow-up deadline', value=date.fromisoformat(saved['deadline']) if saved else dt(cutoff).date()+timedelta(days=2))
                 if st.form_submit_button('Save follow-up'):
                     try:
-                        saved = save_followup(key, action, owner, deadline, report)
+                        saved = save_followup(key, action, owner, deadline, report, path=workspace_db())
                         st.success('Follow-up saved locally.')
                     except ValueError as exc:
                         st.error(str(exc))
