@@ -1,0 +1,103 @@
+{
+  "mode": "Deterministic example investigation",
+  "what_we_found": [
+    "3 overdue cases are currently waiting at laboratory processing.",
+    "Typical waiting time is 6.8 days."
+  ],
+  "contributing": [
+    "3 cases have notes recording waiting for a laboratory slot."
+  ],
+  "missing": [
+    "Recorded notes do not confirm recovery dates."
+  ],
+  "follow_ups": [
+    "Confirm whether waiting for a laboratory slot is still blocking work and when processing can resume."
+  ],
+  "case_ids": [
+    "VF-DEMAND-0195",
+    "VF-DEMAND-0192",
+    "VF-DEMAND-0194"
+  ],
+  "evidence_details": {
+    "waiting_range_days": [
+      5.6,
+      7.2
+    ],
+    "case_ids_without_reason": [],
+    "recorded_notes": [
+      {
+        "case_id": "VF-DEMAND-0195",
+        "notes": [
+          {
+            "case_id": "VF-DEMAND-0195",
+            "stage": "Laboratory processing",
+            "event_type": "note",
+            "timestamp": "2026-10-07T18:51:59.947661",
+            "category": "pending_lab_slot",
+            "note": "Accession awaiting a processing slot. Current batch positions occupied; no additional shift confirmed.",
+            "sequence": 7
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DEMAND-0192",
+        "notes": [
+          {
+            "case_id": "VF-DEMAND-0192",
+            "stage": "Laboratory processing",
+            "event_type": "note",
+            "timestamp": "2026-10-08T05:18:24.946865",
+            "category": "pending_lab_slot",
+            "note": "Accession awaiting a processing slot. Current batch positions occupied; no additional shift confirmed.",
+            "sequence": 7
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DEMAND-0194",
+        "notes": [
+          {
+            "case_id": "VF-DEMAND-0194",
+            "stage": "Laboratory processing",
+            "event_type": "note",
+            "timestamp": "2026-10-09T08:29:49.107285",
+            "category": "pending_lab_slot",
+            "note": "Accession awaiting a processing slot. Current batch positions occupied; no additional shift confirmed.",
+            "sequence": 7
+          }
+        ]
+      }
+    ],
+    "inspected_case": "VF-DEMAND-0195",
+    "interrupted_cases": 0,
+    "overdue_cases": 3
+  },
+  "trace": [
+    {
+      "tool": "get_delayed_cases",
+      "finding": "3 affected case(s)",
+      "arguments": {
+        "stage": "Laboratory processing",
+        "reporting_period": "Last 30 Days"
+      }
+    },
+    {
+      "tool": "get_case_history",
+      "finding": "9 visible events for VF-DEMAND-0195",
+      "arguments": {
+        "case_id": "VF-DEMAND-0195"
+      }
+    },
+    {
+      "tool": "get_exception_notes",
+      "finding": "3 visible notes; 0 cases without stage-specific notes",
+      "arguments": {
+        "case_ids": [
+          "VF-DEMAND-0195",
+          "VF-DEMAND-0192",
+          "VF-DEMAND-0194"
+        ]
+      }
+    }
+  ]
+}

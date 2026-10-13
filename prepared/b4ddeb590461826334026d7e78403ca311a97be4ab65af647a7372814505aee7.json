@@ -1,0 +1,164 @@
+{
+  "mode": "Deterministic example investigation",
+  "what_we_found": [
+    "3 overdue cases are currently waiting at transport & receipt.",
+    "Typical waiting time is 6.7 days.",
+    "6 cases are interrupted; some are also overdue."
+  ],
+  "contributing": [
+    "6 cases have notes recording courier suspension."
+  ],
+  "missing": [
+    "Recorded notes do not confirm recovery dates."
+  ],
+  "follow_ups": [
+    "Confirm whether courier suspension is still blocking work and when processing can resume."
+  ],
+  "case_ids": [
+    "VF-DISRUPTION-0197",
+    "VF-DISRUPTION-0199",
+    "VF-DISRUPTION-0196",
+    "VF-DISRUPTION-0203",
+    "VF-DISRUPTION-0205",
+    "VF-DISRUPTION-0204"
+  ],
+  "evidence_details": {
+    "waiting_range_days": [
+      5.1,
+      8.7
+    ],
+    "case_ids_without_reason": [],
+    "recorded_notes": [
+      {
+        "case_id": "VF-DISRUPTION-0197",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0197",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-04T07:52:03.864204",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DISRUPTION-0199",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0199",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-05T04:17:10.484914",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DISRUPTION-0196",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0196",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-05T14:32:52.168908",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DISRUPTION-0203",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0203",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-07T02:21:23.043156",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DISRUPTION-0205",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0205",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-07T02:35:40.528667",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      },
+      {
+        "case_id": "VF-DISRUPTION-0204",
+        "notes": [
+          {
+            "case_id": "VF-DISRUPTION-0204",
+            "stage": "Sample or diagnostic data received",
+            "event_type": "note",
+            "timestamp": "2026-10-07T22:27:57.020088",
+            "category": "courier_suspension",
+            "incident_id": "INC-COURIER-026",
+            "status": "interrupted",
+            "note": "North route courier collection suspended. Specimen held in validated refrigerated storage; dispatch restart estimated for 14 October 09:00. Receipt time unconfirmed.",
+            "sequence": 5
+          }
+        ]
+      }
+    ],
+    "inspected_case": "VF-DISRUPTION-0197",
+    "interrupted_cases": 6,
+    "overdue_cases": 3
+  },
+  "trace": [
+    {
+      "tool": "get_delayed_cases",
+      "finding": "6 affected case(s)",
+      "arguments": {
+        "stage": "Sample or diagnostic data received",
+        "reporting_period": "Last 7 Days"
+      }
+    },
+    {
+      "tool": "get_case_history",
+      "finding": "6 visible events for VF-DISRUPTION-0197",
+      "arguments": {
+        "case_id": "VF-DISRUPTION-0197"
+      }
+    },
+    {
+      "tool": "get_exception_notes",
+      "finding": "6 visible notes; 0 cases without stage-specific notes",
+      "arguments": {
+        "case_ids": [
+          "VF-DISRUPTION-0197",
+          "VF-DISRUPTION-0199",
+          "VF-DISRUPTION-0196",
+          "VF-DISRUPTION-0203",
+          "VF-DISRUPTION-0205",
+          "VF-DISRUPTION-0204"
+        ]
+      }
+    }
+  ]
+}

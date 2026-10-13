@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "seed": 4101,
+  "pathway": "Fictional preventive-health blood sample panel; no clinical results",
+  "start": "2026-07-20T00:00:00",
+  "cutoff": "2026-10-12T23:59:59",
+  "deadline_policy": "Request timestamp plus 10 calendar days, fixed at request; disruptions never extend deadlines retrospectively.",
+  "stages": [
+    "Test requested",
+    "Appointment or sample collection",
+    "Sample or diagnostic data received",
+    "Laboratory processing",
+    "Medical review",
+    "Report delivered"
+  ],
+  "stage_semantics": "Each stage is a responsibility interval: request intake; appointment scheduling through collection; transport through laboratory receipt; laboratory queue plus analysis; medical queue plus review; report publication. Completion and next entry coincide. Laboratory work_started events distinguish queue from service. Final stage completion is actual delivery.",
+  "scenarios": {
+    "normal": {
+      "label": "Normal Operations",
+      "weekly_requests": [18, 19, 17, 20, 18, 19, 18, 20, 17, 19, 18, 19],
+      "lab_slots": 4,
+      "lab_service_hours": [16, 30],
+      "design": "Stable intake with sufficient laboratory capacity; occasional scheduling and receipt exceptions, with some causes unrecorded."
+    },
+    "demand": {
+      "label": "Growing Demand",
+      "weekly_requests": [10, 11, 12, 13, 14, 16, 18, 22, 26, 30, 34, 38],
+      "lab_slots": 3,
+      "lab_service_hours": [16, 30],
+      "design": "Intake accelerates from 10 to 38 cases weekly against three fixed laboratory slots (approximately 22 cases weekly). Service times match the normal pathway. Early demand fits capacity; later growth creates a FIFO queue. Original deadlines stay fixed."
+    },
+    "disruption": {
+      "label": "Operational Disruption",
+      "weekly_requests": [18, 19, 17, 20, 18, 19, 18, 20, 17, 19, 18, 19],
+      "lab_slots": 4,
+      "lab_service_hours": [16, 30],
+      "outage_start": "2026-10-03T00:00:00",
+      "outage_end": "2026-10-14T09:00:00",
+      "affected_route": "North Clinic",
+      "incident_id": "INC-COURIER-026",
+      "design": "A courier suspension holds North Clinic specimens in validated refrigerated storage. At cutoff, restart is an estimate rather than a recorded future event. Other routes operate normally."
+    }
+  }
+}

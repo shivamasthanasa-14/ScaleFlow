@@ -1,0 +1,74 @@
+{
+  "mode": "Deterministic example investigation",
+  "what_we_found": [
+    "1 overdue case is currently waiting at report preparation.",
+    "Typical waiting time is 0.0 days."
+  ],
+  "contributing": [
+    "No stage-specific blocker has been recorded for these cases."
+  ],
+  "missing": [
+    "1 cases have no recorded reason for this step; causes remain unknown.",
+    "Recorded notes do not confirm recovery dates."
+  ],
+  "follow_ups": [
+    "Request a blocker and completion estimate for the 1 cases without a recorded reason."
+  ],
+  "case_ids": [
+    "VF-DEMAND-0196"
+  ],
+  "evidence_details": {
+    "waiting_range_days": [
+      0.0,
+      0.0
+    ],
+    "case_ids_without_reason": [
+      "VF-DEMAND-0196"
+    ],
+    "recorded_notes": [
+      {
+        "case_id": "VF-DEMAND-0196",
+        "notes": [
+          {
+            "case_id": "VF-DEMAND-0196",
+            "stage": "Laboratory processing",
+            "event_type": "note",
+            "timestamp": "2026-10-07T01:36:26.917929",
+            "category": "pending_lab_slot",
+            "note": "Accession awaiting a processing slot. Current batch positions occupied; no additional shift confirmed.",
+            "sequence": 7
+          }
+        ]
+      }
+    ],
+    "inspected_case": "VF-DEMAND-0196",
+    "interrupted_cases": 0,
+    "overdue_cases": 1
+  },
+  "trace": [
+    {
+      "tool": "get_delayed_cases",
+      "finding": "1 affected case(s)",
+      "arguments": {
+        "stage": "Report delivered",
+        "reporting_period": "Last 30 Days"
+      }
+    },
+    {
+      "tool": "get_case_history",
+      "finding": "13 visible events for VF-DEMAND-0196",
+      "arguments": {
+        "case_id": "VF-DEMAND-0196"
+      }
+    },
+    {
+      "tool": "get_exception_notes",
+      "finding": "1 visible notes; 1 cases without stage-specific notes",
+      "arguments": {
+        "case_ids": [
+          "VF-DEMAND-0196"
+        ]
+      }
+    }
+  ]
+}
